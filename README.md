@@ -1,5 +1,6 @@
 # Aqua Media Cloud
 Интелектуальная система менеджмента мультимедиа контента.
+
 MULTI MEDIA CONTENT SMART MANAGEMENT SYSTEM.
 
 # Introduction | Введение
