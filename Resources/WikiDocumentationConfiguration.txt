@@ -1,0 +1,40 @@
+!! Configuration (Optional)
+
+!!! Web Proxy Configuration
+
+If you have a web proxy server through which you connect to the internet, normally this is automatically detected (i.e. the application uses the same settings as Internet Explorer on your machine). If for some reason this doesn't work, you can manually configure the proxy settings by editing the "Schedulr.exe.config" file in your installation directory. There are two options: you can either set the default proxy to use, or you can configure a specific proxy just for the FlickrNet library that is used behind the scenes. In either cases, replace the top contents of the file with the below fragments (the part below the <appSettings> shouldn't change).
+
+!!!! Enable Default Proxy
+
+{code:xml}
+<?xml version="1.0"?>
+<configuration>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0,Profile=Client"/>
+  </startup>
+  <system.net>
+    <defaultProxy useDefaultCredentials="true">
+      <proxy usesystemdefault="true" proxyaddress="http://127.0.0.1:8080" />
+    </defaultProxy>
+  </system.net>
+  <appSettings>
+...
+{code:xml}
+
+!!!! Enable FlickrNet-Specific Proxy
+
+{code:xml}
+<?xml version="1.0"?>
+<configuration>
+  <configSections> 
+    <section name="flickrNet" type="FlickrNet.FlickrConfigurationManager,FlickrNet"/>
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0,Profile=Client"/>
+  </startup>
+  <flickrNet> 
+    <proxy ipaddress="127.0.0.1" port="8080" username="myuser" password="mypass" domain="mydomain" /> 
+  </flickrNet>
+  <appSettings>
+...
+{code:xml}

@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="Schedulr.Views.Controls.PluginPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <ContentControl ContentTemplate="{StaticResource TitleTextWithLineTemplate}" Content="Available Actions" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Do" VerticalAlignment="Center" Padding="0" Margin="0,0,5,0" Style="{StaticResource SeparatingLabel}" />
+                <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=PluginTypes}" SelectedItem="{Binding Path=SelectedPluginType}" DisplayMemberPath="Name" />
+
+                <Label Grid.Column="0" Grid.Row="1" Content="When" VerticalAlignment="Center" Padding="0" Margin="0,5,5,0" Style="{StaticResource SeparatingLabel}" />
+                <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=PluginCollections}" SelectedItem="{Binding Path=SelectedPluginCollection}" DisplayMemberPath="Description" Margin="0,5,0,0" IsEnabled="{Binding Path=IsPluginCollectionSelectionEnabled}" />
+
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" Margin="0,5,0,5">
+                    <TextBlock Text="{Binding Path=SelectedPluginType.Description, Mode=OneWay}" TextWrapping="Wrap" FontStyle="Italic" Foreground="{StaticResource InfoFontBrush}" />
+                    <WrapPanel Margin="0,5,0,0">
+                        <Button Content="Add" Command="{Binding Path=AddPluginCommand}" ToolTip="{Binding Path=AddPluginCommand.Description}" Margin="0,0,5,0" />
+                        <TextBlock Text="Note: this action can only be added once in the same list." Foreground="{StaticResource TextBrush}" TextWrapping="Wrap" FontWeight="Bold" VerticalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=SelectedPluginType.InstantiationPolicy}" Value="SingleInstancePerScope">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="Note: this action can only be added once in the entire application." Foreground="{StaticResource TextBrush}" TextWrapping="Wrap" FontWeight="Bold" VerticalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=SelectedPluginType.InstantiationPolicy}" Value="SingleInstancePerApplication">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </WrapPanel>
+                    <Expander Style="{StaticResource IndentedContentExpander}" Header="More Information" IsExpanded="False" Margin="0,5,0,0" Visibility="{Binding Path=AdditionalPluginDetailsVisibility}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Author:" FontWeight="Bold" Margin="0,5,5,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsAuthorVisibility}" />
+                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=SelectedPluginType.Author, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsAuthorVisibility}" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Version:" FontWeight="Bold" Margin="0,5,5,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsVersionVisibility}" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=SelectedPluginType.Version, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsVersionVisibility}" />
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Website:" FontWeight="Bold" Margin="0,5,5,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsUrlVisibility}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="{Binding Path=AdditionalPluginDetailsUrlVisibility}">
+                                <w:ExternalHyperlink NavigateUri="{Binding Path=SelectedPluginType.Url, Mode=OneWay}" Foreground="{DynamicResource InfoFontBrush}"><Run Text="{Binding Path=SelectedPluginType.Url, Mode=OneWay}" /></w:ExternalHyperlink>
+                            </TextBlock>
+                        </Grid>
+                    </Expander>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="0" ContentTemplate="{StaticResource TitleTextWithLineTemplate}" Content="Configured Actions" />
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Path=AllPluginCollections}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Expander Margin="0,5,0,0" IsExpanded="{Binding Path=Settings.IsExpanded}" Foreground="{StaticResource TextBrush}">
+                                <Expander.Style>
+                                    <Style TargetType="Expander" BasedOn="{StaticResource IndentedContentExpander}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=PluginInstances.Count}" Value="0">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Expander.Style>
+                                <Expander.Header>
+                                    <TextBlock Text="{Binding Path=Description, Mode=OneWay, StringFormat='When {0}...', Converter={StaticResource lowerCaseConverter}}" />
+                                </Expander.Header>
+                                <ItemsControl ItemsSource="{Binding Path=PluginInstances}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Style="{DynamicResource BorderStyle}" Margin="0,5,0,0" Padding="5">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <CheckBox Grid.Column="0" IsChecked="{Binding Path=IsEnabled}">
+                                                            <TextBlock Text="{Binding Path=Type.Purpose}" TextTrimming="CharacterEllipsis">
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+                                                                        <Setter Property="ToolTip" Value="Uncheck to disable this action" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Path=IsEnabled}" Value="False">
+                                                                                <Setter Property="Foreground" Value="{StaticResource InactiveTextBrush}" />
+                                                                                <Setter Property="ToolTip" Value="Check to enable this action" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </CheckBox>
+                                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.RemovePluginCommand}" CommandParameter="{Binding}" ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.RemovePluginCommand.Description}" Margin="2,0,0,0" Style="{StaticResource SmallButton}">
+                                                                <Image Source="/Resources/Delete.png" Height="12" Width="12" Stretch="Uniform" />
+                                                            </Button>
+                                                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.MovePluginUpCommand}" CommandParameter="{Binding}" ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.MovePluginUpCommand.Description}" Margin="2,0,0,0" Style="{StaticResource SmallButton}">
+                                                                <Image Source="/Resources/MoveUp.png" Height="12" Width="12" Stretch="Uniform" />
+                                                            </Button>
+                                                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.MovePluginDownCommand}" CommandParameter="{Binding}" ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.MovePluginDownCommand.Description}" Margin="2,0,0,0" Style="{StaticResource SmallButton}">
+                                                                <Image Source="/Resources/MoveDown.png" Height="12" Width="12" Stretch="Uniform" />
+                                                            </Button>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <Border Margin="20,5,0,0">
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Path=SettingsControl}" Value="{x:Null}">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <ContentPresenter Content="{Binding Path=SettingsControl}" />
+                                                    </Border>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Expander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

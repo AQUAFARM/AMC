@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="Schedulr.Plugins.Watermark.WatermarkPluginSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <w:EnumToBooleanConverter x:Key="enumConverter" />
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" Grid.IsSharedSizeScope="True">
+        <WrapPanel Orientation="Horizontal" Margin="0,0,0,5">
+            <Label Content="Watermark type" VerticalAlignment="Center" />
+            <RadioButton IsChecked="{Binding Path=Type, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Text}" Margin="5,0,0,0">
+                <Label Content="Text" />
+            </RadioButton>
+            <RadioButton IsChecked="{Binding Path=Type, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Image}" Margin="5,0,0,0">
+                <Label Content="Image" />
+            </RadioButton>
+        </WrapPanel>
+
+        <!-- General settings -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="SettingNameColumn" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Position" Margin="0,0,5,5" VerticalAlignment="Top" />
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,5" Orientation="Horizontal">
+                <UniformGrid Rows="3" Columns="3" Height="50" Width="50">
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=TopLeft}" ToolTip="Top Left" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=TopCenter}" ToolTip="Top Center" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=TopRight}" ToolTip="Top Right" />
+
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=MiddleLeft}" ToolTip="Middle Left" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=MiddleCenter}" ToolTip="Middle Center" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=MiddleRight}" ToolTip="Middle Right" />
+
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=BottomLeft}" ToolTip="Bottom Left" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=BottomCenter}" ToolTip="Bottom Center" />
+                    <ToggleButton IsChecked="{Binding Path=Position, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=BottomRight}" ToolTip="Bottom Right" />
+                </UniformGrid>
+
+                <Label Content="Margin" Margin="5,0,5,0" VerticalAlignment="Top" />
+                <TextBox Text="{Binding Path=Margin}" MinWidth="40" Height="22" VerticalAlignment="Top" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Text settings -->
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Type, Mode=OneWay}" Value="Text">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="SettingNameColumn" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Text" Margin="0,0,5,0" VerticalAlignment="Center" />
+            <Grid Grid.Row="0" Grid.Column="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding Path=TextWatermark}" />
+                <Button Grid.Column="1"  Content="..." x:Name="editTextWatermarkTemplateButton" Click="editTextWatermarkTemplateButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+            </Grid>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Color" Margin="0,5,5,0" VerticalAlignment="Center" />
+            <Grid Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding Path=TextColor}" />
+                <Rectangle Grid.Column="1" x:Name="textColorPreviewRectangle" Stroke="Black" Width="25" Margin="5,0,0,0" ToolTip="Preview" />
+                <Button Grid.Column="2"  Content="..." x:Name="textColorButton" Click="textColorButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+                <Label Grid.Column="3" Content="Opacity" Margin="5,0,0,0" VerticalAlignment="Center" />
+                <Slider Grid.Column="4" Minimum="0" Maximum="1" Value="{Binding Path=TextOpacity}" SmallChange="0.01" LargeChange="0.1" Width="75" VerticalAlignment="Center" Margin="5,0,0,0" Style="{DynamicResource SmallSlider}" />
+                <TextBlock Grid.Column="5" Text="{Binding Path=TextOpacity, Mode=OneWay, StringFormat=p0}" VerticalAlignment="Center" MinWidth="40" Margin="5,0,0,0" />
+            </Grid>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Font" Margin="0,5,5,0" VerticalAlignment="Center" />
+            <Grid Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" SelectedValue="{Binding Path=FontName}" x:Name="fontNameComboBox" />
+                <Label Grid.Column="1" Content="Size" Margin="5,0,0,0" VerticalAlignment="Center" />
+                <TextBox Grid.Column="2" Text="{Binding Path=FontSize}" MinWidth="40" Margin="5,0,0,0" />
+            </Grid>
+        </Grid>
+
+        <!-- Image settings -->
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Type, Mode=OneWay}" Value="Image">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="SettingNameColumn" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Image file" Margin="0,0,5,0" VerticalAlignment="Center" />
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding Path=ImageWatermarkFileName}" />
+                <Button Grid.Column="1"  Content="..." x:Name="browseImageWatermarkFileNameButton" Click="browseImageWatermarkFileNameButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+            </Grid>
+        </Grid>
+
+    </StackPanel>
+</UserControl>

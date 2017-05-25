@@ -1,0 +1,13 @@
+!! Frequently Asked Questions
+
+!!! How can I process videos (e.g. to resize them) before they are uploaded?
+
+You can use the "Run Program" rendering plugin to execute any arbitrary program.
+
+One of the well-known video processing tools that you can use is [url:FFmpeg|http://ffmpeg.org/] (although finding a ready-to-use version of it is challenging). Once you have FFmpeg installed, you can configure the Run Program rendering plugin to execute it. There are many options in the tool which won't be explained here, but the following settings should work out of the box to resize the input video to 1024 pixels:
+* Arguments:
+** {{ -i "$(RenderingInputFile)" -y -vcodec libxvid -aspect 16:9 -s 1024x774 -acodec ac3 -ab 192kb "$(RenderingOutputFile)" }}
+* Run on:
+** {{ Videos only (not pictures) }}
+* File extension for the temporary output file:
+** {{ avi }}

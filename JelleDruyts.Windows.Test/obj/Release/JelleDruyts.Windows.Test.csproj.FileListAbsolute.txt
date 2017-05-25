@@ -1,0 +1,13 @@
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\Images\ExifDoubleTagsAndUnicode.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\Images\ExifSample.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\Images\Portrait.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\Images\Landscape.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\Images\Watermark.png
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\JelleDruyts.Windows.Test.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\JelleDruyts.Windows.Test.pdb
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\JelleDruyts.Windows.pdb
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Release\JelleDruyts.Windows.xml
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Release\JelleDruyts.Windows.Test.csprojResolveAssemblyReference.cache
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Release\JelleDruyts.Windows.Test.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Release\JelleDruyts.Windows.Test.pdb

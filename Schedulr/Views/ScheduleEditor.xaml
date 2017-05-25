@@ -1,0 +1,174 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+             xmlns:s="http://schemas.schedulr.codeplex.com/2010/xaml/presentation"
+             x:Class="Schedulr.Views.ScheduleEditor"
+             x:Name="UserControl"
+             d:DesignHeight="480"
+             d:DesignWidth="640"
+             mc:Ignorable="d"
+             w:MergeCollections.InputBindings="{Binding InputBindings}"
+             DataContext="{Binding Path=ScheduleEditorViewModel, Source={StaticResource Locator}}">
+    <Border Style="{DynamicResource BorderStyle}" Background="{DynamicResource DiagramGradientBrush}" Padding="5">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <GroupBox Header="Trigger">
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <RadioButton x:Name="scheduleTypeIsDailyRadioButton" IsChecked="{Binding Path=UploadSchedule.Type, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Daily}" Margin="0,0,5,0"><Label Content="Daily" /></RadioButton>
+                                <RadioButton x:Name="scheduleTypeIsWeeklyRadioButton" IsChecked="{Binding Path=UploadSchedule.Type, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Weekly}" Margin="0,0,5,0"><Label Content="Weekly" /></RadioButton>
+                            </StackPanel>
+
+                            <WrapPanel Margin="0,10,0,5" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Start on" Margin="0,0,5,0" />
+                                <DatePicker SelectedDate="{Binding StartDate}" Margin="0,0,5,0">
+                                    <DatePicker.Resources>
+                                        <!-- Reset the button style back to the default so the DatePicker button isn't styled like all other buttons -->
+                                        <Style TargetType="{x:Type Button}" />
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="at" Margin="0,0,5,0" />
+                                <TextBox Width="25" Text="{Binding StartHour, StringFormat='{}{0:00}'}" Margin="0,0,5,0" />
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text=":" Margin="0,0,5,0" />
+                                <TextBox Width="25" Text="{Binding StartMinute, StringFormat='{}{0:00}'}" Margin="0,0,5,0" />
+                            </WrapPanel>
+                            <WrapPanel Margin="0,10,0,5" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Repeat every" Margin="0,0,5,0" />
+                                <TextBox Width="25" Text="{Binding Path=UploadSchedule.HourlyInterval}" Margin="0,0,5,0" />
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="hour(s) for a duration of" Margin="0,0,5,0" />
+                                <TextBox Width="25" Text="{Binding Path=UploadSchedule.HourlyIntervalDuration}" Margin="0,0,5,0" />
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="hour(s)." Margin="0,0,5,0" />
+                            </WrapPanel>
+
+                            <StackPanel Visibility="{Binding ElementName=scheduleTypeIsDailyRadioButton, Path=IsChecked, Converter={StaticResource visibilityConverter}}">
+                                <WrapPanel Margin="0,10,0,5" VerticalAlignment="Center">
+                                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Repeat every" Margin="0,0,5,0" />
+                                    <TextBox Width="25" Text="{Binding Path=UploadSchedule.DailyInterval}" Margin="0,0,5,0" />
+                                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="day(s)." Margin="0,0,5,0" />
+                                </WrapPanel>
+                            </StackPanel>
+
+                            <StackPanel Visibility="{Binding ElementName=scheduleTypeIsWeeklyRadioButton, Path=IsChecked, Converter={StaticResource visibilityConverter}}">
+                                <WrapPanel Margin="0,10,0,5" VerticalAlignment="Center">
+                                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Repeat every" Margin="0,0,5,0" />
+                                    <TextBox Width="25" Text="{Binding Path=UploadSchedule.WeeklyInterval}" Margin="0,0,5,0" />
+                                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="week(s) on the following days:" Margin="0,0,5,0" />
+                                </WrapPanel>
+                                <WrapPanel Margin="20,0,0,0">
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnMonday}"><Label Content="_Monday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnTuesday}"><Label Content="_Tuesday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnWednesday}"><Label Content="W_ednesday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnThursday}"><Label Content="T_hursday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnFriday}"><Label Content="_Friday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnSaturday}"><Label Content="S_aturday" /></CheckBox>
+                                    <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=UploadSchedule.WeeklyOnSunday}"><Label Content="S_unday" /></CheckBox>
+                                </WrapPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Settings" Margin="0,5,0,0">
+                        <StackPanel Margin="5">
+                            <CheckBox IsChecked="{Binding Path=UploadSchedule.OnlyIfNotOnBatteryPower}"><Label Content="Only run this task when the computer is plugged in (i.e. not on _battery power)" /></CheckBox>
+                            <CheckBox x:Name="onlyIfLoggedOnCheckBox" Margin="0,5,0,0" IsChecked="{Binding Path=UploadSchedule.OnlyIfLoggedOn}"><Label Content="Only run this task when the user is _logged on" /></CheckBox>
+                            <CheckBox Margin="20,5,0,0" IsChecked="{Binding Path=UploadSchedule.WakeComputer}" IsEnabled="{Binding Path=UploadSchedule.OnlyIfLoggedOn, Converter={StaticResource inverseConverter}}"><Label Content="_Wake the computer to run this task" /></CheckBox>
+                            <WrapPanel Margin="20,5,0,0" Visibility="{Binding Path=WakeTimersWarningVisibility, FallbackValue=Collapsed}" Orientation="Horizontal">
+                                <Image Source="/Resources/Warning.png" Margin="0,0,5,0" />
+                                <TextBlock Foreground="{DynamicResource WarningForegroundBrush}" VerticalAlignment="Center">
+                                    <Run Text="Wake timers are not enabled to wake the computer from sleep." />
+                                    <w:ExternalHyperlink Foreground="{DynamicResource WarningForegroundBrush}" NavigateUri="http://support.microsoft.com/kb/973454"><Run Text="Click here for more information." /></w:ExternalHyperlink>
+                                </TextBlock>
+                                <Button Command="{Binding RefreshWakeTimersStatusCommand}" Margin="2,0,0,0" ToolTip="Check again if you have changed your power settings" Style="{StaticResource SmallButton}">
+                                    <Image Source="/Resources/Refresh.png" />
+                                </Button>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Status" Margin="0,5,0,0" Visibility="{Binding Path=StatusVisibility, FallbackValue=Collapsed}">
+                        <StackPanel Margin="5">
+                            <ItemsControl ItemsSource="{Binding StatusCommands}" Margin="0,0,0,5">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Name}" Command="{Binding}" ToolTip="{Binding Description}" Margin="0,0,5,0" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Grid DataContext="{Binding Status}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Task Name" Margin="0,5,5,0" />
+                                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=TaskName, Mode=OneWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,5,0,0" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="State" Margin="0,5,5,0" />
+                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=State, Mode=OneWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,5,0,0" />
+                                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Last Run Time" Margin="0,5,5,0" />
+                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=LastRunTime, Mode=OneWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,5,0,0" />
+                                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Last Run Result" Margin="0,5,5,0" />
+                                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=LastRunResult, Mode=OneWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,5,0,0" />
+                                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Text="Next Run Time" Margin="0,5,5,0" />
+                                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=NextRunTime, Mode=OneWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,5,0,0" />
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <Border Grid.Row="1" Style="{DynamicResource BorderStyle}" Background="Transparent" Padding="5">
+                <StackPanel Orientation="Horizontal">
+                    <ItemsControl ItemsSource="{Binding TaskCommands}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Name}" Command="{Binding}" ToolTip="{Binding Description}" Margin="0,0,5,0" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding StatusMessage}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding StatusMessageIsWarning}" Value="False">
+                                        <Setter Property="Foreground" Value="{DynamicResource SuccessForegroundBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusMessageIsWarning}" Value="True">
+                                        <Setter Property="Foreground" Value="{DynamicResource WarningForegroundBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+    </Border>
+</UserControl>

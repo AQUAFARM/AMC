@@ -1,0 +1,18 @@
+!! Getting Started
+
+The first time you run the application, you will get the accounts screen where you can add your Flickr user account. You'll be asked to authenticate with Flickr and authorize this application to access your account (this is needed to upload files). You can then simply add the files to be uploaded to Flickr in the "Queue" screen. You can either use the "Add" or "Add Batch" buttons or drag and drop files onto the queue.
+
+The title, description, tags and geographic location are automatically filled in if the file file contained this information, otherwise enter the necessary details for each file yourself. You can also specify the photosets and groups to which the file should be added in Flickr, along with other details like the visibility and license. You can change the defaults in the Options screen, e.g. to always use the same photoset for all files that are added.
+
+Then you can create a Windows scheduled task to run Flickr Schedulr at your desired schedule: every time the task is run, the next batch of files in the queue will be uploaded and moved to the "Uploads" screen. To create the task, simply specify your desired schedule in the application and click "Create" to activate the task. Alternatively, you can also use Windows Tasks Scheduler yourself to define the task (see instructions on the [Scheduling] help page).
+
+!! More Information
+
+For more information on using the application, see the following pages:
+* [Installation]
+* [Configuration] (optional)
+* [Command-Line Options|CommandLineOptions]
+* [Frequently Asked Questions|Faq]
+* [Upgrading]
+For more information on extending the application, see the following page:
+* [Writing Plugins|WritingPlugins]

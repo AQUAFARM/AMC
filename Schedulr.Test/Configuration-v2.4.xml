@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SchedulrConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.schedulr.codeplex.com/2010/06/">
+  <Accounts>
+    <Account>
+      <AuthenticationToken>token-john</AuthenticationToken>
+      <Id>John-ID</Id>
+      <IsDefaultAccount>true</IsDefaultAccount>
+      <Name>John</Name>
+      <QueuedPictures />
+      <Settings>
+        <DeleteFileAfterUpload>true</DeleteFileAfterUpload>
+        <FoldersToMonitor xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:string>c:\foldertomonitor1</d5p1:string>
+          <d5p1:string>c:\foldertomonitor2</d5p1:string>
+        </FoldersToMonitor>
+        <PictureDefaults>
+          <BatchId>0</BatchId>
+          <ContentType>Photo</ContentType>
+          <DateUploaded i:nil="true" />
+          <Description>default-description. This description spans&#xD;
+multiple lines&#xD;
+&#xD;
+which should be supported!</Description>
+          <FileName i:nil="true" />
+          <GroupIds xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+            <d6p1:string>group-id-2</d6p1:string>
+            <d6p1:string>group-id-3</d6p1:string>
+          </GroupIds>
+          <License>AttributionNoncommercialNoDerivativesCC</License>
+          <PictureId i:nil="true" />
+          <PreviewUrl i:nil="true" />
+          <Safety>Safe</Safety>
+          <SetIds xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+            <d6p1:string>set-id-1</d6p1:string>
+          </SetIds>
+          <Tags>default-tags</Tags>
+          <Title>default-title</Title>
+          <VisibilityIsFamily>true</VisibilityIsFamily>
+          <VisibilityIsFriend>false</VisibilityIsFriend>
+          <VisibilityIsPublic>true</VisibilityIsPublic>
+          <WebUrl i:nil="true" />
+        </PictureDefaults>
+        <RetrieveMetadata>true</RetrieveMetadata>
+      </Settings>
+      <UploadSchedule>
+        <DailyInterval>3</DailyInterval>
+        <HourlyInterval>2</HourlyInterval>
+        <HourlyIntervalDuration>4</HourlyIntervalDuration>
+        <OnlyIfLoggedOn>false</OnlyIfLoggedOn>
+        <OnlyIfNotOnBatteryPower>true</OnlyIfNotOnBatteryPower>
+        <StartTime>2010-06-30T19:00:00</StartTime>
+        <Type>Daily</Type>
+        <WakeComputer>true</WakeComputer>
+        <WeeklyInterval>4</WeeklyInterval>
+        <WeeklyOnFriday>false</WeeklyOnFriday>
+        <WeeklyOnMonday>false</WeeklyOnMonday>
+        <WeeklyOnSaturday>true</WeeklyOnSaturday>
+        <WeeklyOnSunday>false</WeeklyOnSunday>
+        <WeeklyOnThursday>true</WeeklyOnThursday>
+        <WeeklyOnTuesday>true</WeeklyOnTuesday>
+        <WeeklyOnWednesday>false</WeeklyOnWednesday>
+      </UploadSchedule>
+      <UploadedPictures />
+      <UserInfo>
+        <BuddyIconUrl>http://www.flickr.com/photos/john/buddy-icon</BuddyIconUrl>
+        <Groups>
+          <PictureCollection>
+            <Id>group-id-1</Id>
+            <ImageUrl>group-image-1</ImageUrl>
+            <Name>group-name-1</Name>
+          </PictureCollection>
+          <PictureCollection>
+            <Id>group-id-2</Id>
+            <ImageUrl>group-image-2</ImageUrl>
+            <Name>group-name-2</Name>
+          </PictureCollection>
+          <PictureCollection>
+            <Id>group-id-3</Id>
+            <ImageUrl>group-image-3</ImageUrl>
+            <Name>group-name-3</Name>
+          </PictureCollection>
+        </Groups>
+        <IsProUser>true</IsProUser>
+        <PicturesUrl>http://www.flickr.com/photos/john</PicturesUrl>
+        <Sets>
+          <PictureCollection>
+            <Id>set-id-1</Id>
+            <ImageUrl>set-image-1</ImageUrl>
+            <Name>set-name-1</Name>
+          </PictureCollection>
+          <PictureCollection>
+            <Id>set-id-2</Id>
+            <ImageUrl>set-image-2</ImageUrl>
+            <Name>set-name-2</Name>
+          </PictureCollection>
+        </Sets>
+        <UploadLimit>10485760</UploadLimit>
+        <UserId i:nil="true" />
+        <UserName>John</UserName>
+      </UserInfo>
+    </Account>
+  </Accounts>
+</SchedulrConfiguration>

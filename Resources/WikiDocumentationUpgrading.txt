@@ -1,0 +1,9 @@
+!! Upgrading
+
+!!! Upgrading From v2.x
+
+In v3.0, there have been changes to the underlying configuration system but your existing configuration will be migrated automatically. Settings that used to be built in but that are now available as plugins (e.g. monitoring folders, importing metadata when adding files, or deleting files after upload) will also be automatically converted to their new plugin counterparts.
+
+!!! Upgrading From v1.x
+
+In v2.0, there have been substantial changes to the underlying configuration system, so initially your upload queue will not be automatically migrated from the previous version. Open the previous version of the application and export the configuration to a file (in the Options screen). Then start the new version, select an account in the Accounts screen, click Import Pictures and select the configuration file you just saved. The queued pictures will be imported into the upload queue of the selected account.

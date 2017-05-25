@@ -1,0 +1,9 @@
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\Schedulr.Common.xml
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\Schedulr.Common.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\Schedulr.Common.pdb
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\JelleDruyts.Windows.pdb
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Release\JelleDruyts.Windows.xml
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Release\Schedulr.Common.csprojResolveAssemblyReference.cache
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Release\Schedulr.Common.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Release\Schedulr.Common.pdb

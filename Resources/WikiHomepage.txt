@@ -1,0 +1,140 @@
+!! Introduction
+
+Flickr Schedulr is a Windows desktop application that automatically uploads pictures and videos to [url:Flickr|http://www.flickr.com] based on a schedule (e.g. to post a new picture every day at a certain time). This effectively takes the hassle of uploading pictures and videos at regular intervals away, and allows you to go out and have fun shooting pictures (or drinking beer) while your photoblog is maintained for you.
+
+Of course, you don't _have_ to schedule your uploads, it's also a fine stand-alone Flickr upload tool as it is. It allows you to create a queue of files to be uploaded, along with their titles, descriptions, tags, photosets and groups into which they should end up, and lots of other details. You can group them into batches that should be uploaded together. And a flexible plugin mechanism adds tons of other functionality - like automatically importing metadata, determining photosets and groups, monitoring folders for new files, and modifying pictures or videos before they are uploaded (e.g. to resize, add watermarks or borders).
+
+For more details on how it works, see the [Documentation] page.
+
+!! Free Software
+
+This application is completely free to use. If you feel it saves you a lot of time and you like it so much that you want to support the countless hours that have gone in developing this - please do feel free to donate!
+
+[image:Donate|https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_donate_LG.gif|https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GJDYX8VK62BBG&lc=US&item_name=Flickr%20Schedulr&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted]
+
+!! Features
+
+Flickr Schedulr has the following *major features*:
+* Easily maintain a queue of pictures and videos to be uploaded to Flickr.
+* Edit the title, description and tags for each file, as well as the location, privacy, search visibility, content type and license, and set the photosets and groups to which it must be added.
+* Edit multiple files at once so you can make changes to lots of files at the same time.
+* Warns you if there are files in your queue that are larger than the maximum file size you are allowed to upload.
+* Files can be placed in batches to be uploaded together.
+* Batches can be configured to create a new photoset when they are uploaded.
+* Drag and drop files onto the queue from Windows Explorer.
+* Multiple Flickr accounts are supported, you're not limited to just one user account.
+* A Windows scheduled task can easily be created to define and maintain the upload schedule.
+* Can be run from the command line with the "/upload /account:name" switch to upload the next batch of files in the queue.
+* Keeps a history of all files that have been uploaded.
+* Shows you all your important account information, e.g. your remaining upload quota.
+* Import and export the configuration to a file (e.g. for backup and restore).
+The following *general plugins* are included by default:
+* *Backup Configuration*: creates backups of your configuration.
+* *Delete Picture Or Video*: deletes a picture or video after it is uploaded.
+* *Determine Sets & Groups*: determines the photosets and groups for a picture or video when it is added to the queue based on the folder it's in.
+* *Import Metadata*: retrieves the title, description and tags from a picture or video when it is added to the queue.
+* *Monitor Folders*: adds new pictures or videos in monitored folders to the queue.
+* *Move Picture Or Video*: moves a picture or video after it is uploaded.
+* *Run Program*: runs an arbitrary program on any event.
+* *Delay*: delays for a number of seconds before running the next action.
+The following *rendering plugins* (that modify a picture or video before it is uploaded) are included by default:
+* *Watermark* (for pictures only): adds a text or image watermark to a picture.
+* *Add Border* (for pictures only): adds a border of configurable color and size to a picture.
+* *Resize* (for pictures only): resizes a picture.
+* *Crop* (for pictures only): crops a picture.
+* *Convert To Black & White* (for pictures only): converts a picture to black and white.
+* *Run Program* (for pictures and videos): runs an arbitrary program before uploading (e.g. ffmpeg to process video files).
+* *Save Copy* (for pictures and videos): saves a copy of the fully rendered file so you can have a copy of the exact file that was uploaded.
+If you can think of other great features, please let us know through the discussion forums or the issue tracker!
+
+!! Screenshots
+
+A picture says more than a thousand words, so see the [Screenshots] page to get a feel for how it all looks... But here's a teaser already:
+
+[image:Flickr Schedulr|SchedulrQueueDetails.png]
+
+!! What's New?
+
+* v3.1 (June 28th, 2011)
+** The "Import Metadata" plugin can now add lots of additional details (like exposure time, aperture, ISO, ...) to a picture's description in a configurable way.
+** Added a "Delay" plugin that you can use to wait for a number of seconds before running the next action in the list.
+** The expanded/collapsed state is now remembered for events as well.
+** Fixed an important issue that always caused the application to crash after uploading a selection of files.
+** Fixed an important issue that could cause the application to crash when files were added from monitored folders.
+* v3.0 (May 12, 2011)
+** You can now configure a new photoset to be created for a batch when it is uploaded.
+** Added support for plugins that can perform actions when certain events happen in the application.
+** Many new features are now available as plugins that come with the application:
+*** Backing up the configuration.
+*** Importing metadata when new files are added to the queue.
+*** Deleting or moving files after they are uploaded.
+*** Automatically determining photosets and groups when new files are added to the queue based on the folder they're in.
+*** Monitoring folders for new files and optionally placing them in separate batches per folder they're in.
+*** Running arbitrary programs on any event.
+*** Modifying a picture or video before it is uploaded (adding borders, converting to black & white, cropping, resizing, adding watermarks).
+** You can now sort photosets and groups by name or age.
+** You can now use other map providers for setting the geographic location (Bing, Yahoo, OpenStreetMaps) as well as choosing a satellite or hybrid view.
+** The expanded/collapsed state is now remembered for batches as well.
+** Upgraded to new versions of the TaskScheduler library and GMap.NET mapping library.
+* v2.4 (January 25, 2011)
+** You can now specify if pictures should be visible in public searches.
+** An existing geographic location that is embedded in the picture's metadata is now imported when you add the picture to the queue.
+** You can now import a geographic location from another file.
+** You can now open a picture in its default application by clicking on the file name.
+** You can now shuffle the pictures in the queue.
+** The expanded/collapsed state is now remembered for all panels (except picture batches - for now).
+** You can now manually open and close the selected picture details panel, or lock it so that it doesn't automatically open and close.
+** The upload progress shows more detailed progress again (not just on the number of pictures already uploaded but even on the progress of the currently uploading picture).
+** For large numbers of pictures in the queue, the performance should be dramatically improved.
+** Fixed issue that clicking a single picture didn't select only that picture when multiple pictures were already selected.
+** Fixed issue that the "Automatically retrieve metadata from pictures" option wasn't taken into account.
+** Fixed some user interface issues.
+** Fixed issue that editing multiple pictures wouldn't always work well when changing the selection.
+** Videos that aren't processed by Flickr yet no longer show an error but instead just silently retry when you restart the application or refresh your account information.
+* v2.3 (December 21, 2010)
+** You can now geo-tag your pictures by setting the location where they were taken.
+** You can now display the picture queue in a "flow" style that makes better use of the available screen space.
+** You can now disable preview thumbnails for pictures to speed up working with the picture queue.
+** Fixed issue with video uploads by refreshing web info after the video is finished processing at Flickr.
+** Uploaded pictures that are added to the pending queue of a group no longer mark the upload as failed.
+* v2.2 (November 28, 2010)
+** Videos are now supported as well.
+** The application can now automatically add pictures to the queue when it starts up, from specific monitored folders.
+** Sets and Groups can now be displayed as text only (without icons) to speed up the application.
+** Fixed issue that tags are not saved when editing multiple pictures.
+** Fixed issue that application would not terminate while uploading pictures in the background - by upgrading to FlickrNet 3.1.
+** Fixed issue that application would keep crashing when a schedule is set up (under certain conditions) - by upgrading to Microsoft.Win32.TaskScheduler 1.5 Beta 3.
+* v2.1 (October 21, 2010)
+** The application now remembers the window size and position.
+** Now uploading pictures asynchronously so the default FlickrNet timeout of 30 seconds does not apply. This should hopefully resolve the frequent upload failure issue.
+** Upgraded to FlickrNet 3.1 Beta.
+* v2.0 (September 4, 2010)
+** The application was completely rewritten in Windows Presentation Foundation (WPF), which makes for a much nicer user experience.
+** You can now create a Windows scheduled task directly from the application.
+** You can now assign a content type and license to pictures.
+** You can now configure more than one Flickr account and maintain upload queues for each account separately from within the same application.
+** You can now add pictures to the queue from the command line using the "/add" and "/addbatch" switches.
+* v1.4 (January 4, 2010)
+** You can now resize the Sets and Groups lists to make more room for lists with long names.
+** Fixed a bug that occurred when an already uploaded picture was deleted: "System.ArgumentException An argument is invalid"
+* v1.3.1 (October 16, 2009)
+** Fixed a bug that could occur on startup: "The assembly does not have the AssemblyMilestoneAttribute defined: System.Windows.Forms, ..."
+* v1.3 (October 11, 2009)
+** You can now upload more than one picture at a time in batch, by indicating that a picture should be uploaded together with the next picture in the queue. When uploading, all pictures are uploaded in one batch until one is encountered that doesn't have this setting anymore.
+** When you have selected multiple pictures, any changes are made to all the selected pictures in stead of just the "active" one.
+** The usability of the editing area has been improved: sets and groups are now defined separately and the different parts of the window can be resized with splitter bars.
+** Previously uploaded pictures can be added to the queue again.
+* v1.2 (December 4, 2007)
+** You can now choose Groups and multiple Photosets to associate your pictures with.
+** I'm also releasing the source code from now on (built on .NET 2.0 with Visual Studio 2008).
+** I've set up a dedicated [url:Schedulr Group on Flickr|http://www.flickr.com/groups/schedulr], a community site where you can ask questions, give comments, complain about bugs (what, bugs?!) and post pictures - uploaded with Schedulr of course!
+* v1.1 (November 12, 2007)
+** You can now move pictures directly to the top or bottom of the upload queue.
+** You can now shuffle the upload queue to make a randomized list of pictures to upload.
+** You can now upload all selected pictures in the upload queue with the "Upload Now" button.
+** You can now get inline previews of the pictures inside the Queued Pictures list.
+** You can now import and export the current configuration (containing queued and uploaded pictures).
+** You can now see how many items are in the queue and which one you are editing.
+** You can now easily navigate up and down in the queue from anywhere with the ALT-UP and ALT-DOWN keys.
+* v1.0 (October 19, 2007)
+** Initial release.

@@ -1,0 +1,13 @@
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\Images\ExifDoubleTagsAndUnicode.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\Images\ExifSample.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\Images\Portrait.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\Images\Landscape.jpg
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\Images\Watermark.png
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\JelleDruyts.Windows.Test.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\JelleDruyts.Windows.Test.pdb
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\JelleDruyts.Windows.pdb
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\bin\Debug\JelleDruyts.Windows.xml
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Debug\JelleDruyts.Windows.Test.csprojResolveAssemblyReference.cache
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Debug\JelleDruyts.Windows.Test.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows.Test\obj\Debug\JelleDruyts.Windows.Test.pdb

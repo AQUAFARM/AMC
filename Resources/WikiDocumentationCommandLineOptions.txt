@@ -1,0 +1,25 @@
+!! Command Line Options
+
+You can use the following command line options:
+
+{{ Schedulr [/account:name] [/upload] [/add | /addbatch] [file1 file2...] }}
+
+* /account: the name of the Flickr account to use (to upload or add files to); if this is not specified, the default account will be used.
+* /upload will upload the next batch of files from the specified account to Flickr.
+* /add will add the specified files to the queue of the specified account as individual batches (one batch per file).
+* /addbatch will add the specified files to the queue of the specified account as one single batch.
+* file1 file2...: the file(s) to add to the queue of the specified account.
+None of these arguments are required, and if you only pass in a list of files they will simply be added as individual batches to the queue of the default account.
+
+!! Examples
+
+Upload the next batch of files from the default account:
+* {{ Schedulr /upload }}
+Upload the next batch of files from a specified account:
+* {{ Schedulr /upload /account:"My Account" }}
+Add files to the queue of the default account:
+* {{ Schedulr "My Picture 1.jpg" "My Picture 2.jpg" }}
+Add files to the queue of a specified account:
+* {{ Schedulr /add /account:"My Account" "My Picture 1.jpg" "My Picture 2.jpg" }}
+Add a single batch of files to the queue of the default account:
+* {{ Schedulr /addbatch "My Picture 1.jpg" "My Picture 2.jpg" }}

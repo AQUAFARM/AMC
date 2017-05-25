@@ -1,0 +1,86 @@
+!! Writing Plugins
+
+To create plugins that extend the way the application works, you can create a .NET assembly that contains your plugins and simply place the .dll file in the application directory. They will automatically be discovered when the application starts up, and get added to the available plugins in the Events screen.
+
+If you do create any plugins, please share them with the community so that everyone can benefit from your great work!
+
+!!! Quickstart Guide
+
+To get started, create a new .NET 4 class library project in Visual Studio and add a reference to "Schedulr.Common.dll".
+
+There are two major types of plugins: event plugins and rendering plugins. Your plugin classes should implement either the {{ IEventPlugin }} or {{ IRenderingPlugin }} interface. If your plugin needs to store settings, you must also implement the {{ ISupportSettings }} interface. For your convenience, there are also 4 base classes that already provide all the basic functionality of these interfaces, so you can just derive from the appropriate {{ EventPlugin }} or {{ RenderingPlugin }} class.
+
+To register your plugin and declare which events or renderings you support, add the {{ [Plugin] }} attribute and at least one {{ [SupportedXXX] }} attribute.
+
+Finally, implement the appropriate interface methods (or override the base class methods you're interested in).
+
+For more information, it's best to look at the source code for the built-in plugins to understand how they work.
+
+!!! Example
+
+Below is the full source code for the built-in "Delete File" plugin. This is a very simple plugin that doesn't have any settings, but it shows how easy it can be to write plugins.
+
+{code:c#}
+[Plugin("Delete Picture Or Video", "Delete the picture or video", "Deletes the picture or video file from disk.", InstantiationPolicy = PluginInstantiationPolicy.SingleInstancePerScope)]
+[SupportedPictureEvent(PictureEventType.Uploaded)]
+[SupportedPictureEvent(PictureEventType.RemovedFromQueue)]
+[SupportedPictureEvent(PictureEventType.RemovedFromUploads)]
+public class DeleteFilePlugin : EventPlugin
+{
+    public override void OnPictureEvent(PictureEventArgs args)
+    {
+        // Do not delete the file for failed uploads.
+        if (args.Event == PictureEventType.Uploaded && args.UploadResult.Status != PictureUploadStatus.Succeeded)
+        {
+            return;
+        }
+
+        File.Delete(args.Picture.FileName);
+        this.Host.Logger.Log(string.Format(CultureInfo.CurrentCulture, "Deleting file according to settings: \"{0}\"", args.Picture.FileName), TraceEventType.Information);
+    }
+}
+{code:c#}
+
+!!! Available Events
+
+The table below lists all the events that are currently available from the application.
+* The scope defines at which level the event is raised, i.e. application-wide or specific to one account.
+* The type is the main configuration class that the plugin will work with.
+* The event is the specific event that can be handled.
+
+|| Scope || Type || Event || Description ||
+| Application | Application | Started | The application has started |
+|  |  | Closing | The application is closing |
+|  | Configuration | Loaded | The configuration has just been loaded |
+|  |  | Saving | The configuration is about to be saved |
+|  |  | Saved | The configuration has just been saved |
+|  |  | Exporting | The configuration is about to be exported |
+|  |  | Exported | The configuration has just been exported |
+|  | GeneralAccount | Adding | An account is about to be added |
+|  |  | Added | An account has just been added |
+|  |  | Removing | An account is about to be removed |
+|  |  | Removed | An account has just been removed |
+| Account | Account | Activated | An account has just been activated |
+|  |  | Deactivated | An account has just been deactivated |
+|  |  | Refreshing | An account is about to have its information refreshed from Flickr |
+|  |  | Refreshed | An account has just refreshed its information from Flickr |
+|  | Batch | Adding | A batch is about to be added to the queue |
+|  |  | Added | A batch has just been added to the queue |
+|  |  | Removing | A batch is about to be removed from the queue |
+|  |  | Removed | A batch has just been removed from the queue |
+|  | Picture | Adding | A picture or video is about to be added to the queue |
+|  |  | Added | A picture or video has just been added to the queue |
+|  |  | Uploading | A picture or video is about to be uploaded |
+|  |  | Uploaded | A picture or video has just been uploaded |
+|  |  | RemovingFromQueue | A picture or video is about to be removed from the queue |
+|  |  | RemovedFromQueue | A picture or video has just been removed from the queue |
+|  |  | RemovingFromUploads | A picture or video is about to be removed from the upload history |
+|  |  | RemovedFromUploads | A picture or video has just been removed from the upload history |
+|  | Scheduled Task | Creating | The scheduled task is about to be created |
+|  |  | Created | The scheduled task has just been created |
+|  |  | Updating | The scheduled task is about to be updated |
+|  |  | Updated | The scheduled task has just been updated |
+|  |  | EnabledChanging | The scheduled task is about to be enabled or disabled |
+|  |  | EnabledChanged | The scheduled task has just been enabled or disabled |
+|  |  | Deleting | The scheduled task is about to be deleted |
+|  |  | Deleted | The scheduled task has just been deleted |

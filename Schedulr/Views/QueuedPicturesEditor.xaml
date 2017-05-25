@@ -1,0 +1,54 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sv="clr-namespace:Schedulr.Views"
+             xmlns:svc="clr-namespace:Schedulr.Views.Controls"
+             x:Class="Schedulr.Views.QueuedPicturesEditor"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d" 
+             DataContext="{Binding Path=QueuedPicturesViewModel, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" x:Name="detailsColumn" />
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" Width="5" HorizontalAlignment="Stretch" Background="{DynamicResource MainBackgroundBrush}" IsEnabled="{Binding Path=PictureDetails.UISettings.PictureDetailsPanelIsExpanded, FallbackValue=False}" />
+
+        <Border Grid.Column="0" Style="{DynamicResource BorderStyle}" Background="{DynamicResource DiagramGradientBrush}">
+            <svc:PictureQueue DataContext="{Binding PictureQueue}" />
+        </Border>
+
+        <Expander Grid.Column="2" ExpandDirection="Right" Width="Auto" IsExpanded="{Binding Path=PictureDetails.UISettings.PictureDetailsPanelIsExpanded}" x:Name="detailsPanelExpander">
+            <Expander.Header>
+                <StackPanel Orientation="Vertical" x:Name="detailsExpanderHeader">
+                    <CheckBox IsChecked="{Binding Path=PictureDetails.UISettings.PictureDetailsPanelIsLocked}" Margin="0,0,0,5" Template="{StaticResource lockCheckBox}" />
+                    <TextBlock TextWrapping="NoWrap" HorizontalAlignment="Stretch" Text="Edit Selection">
+                        <TextBlock.LayoutTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="-90"/>
+                            </TransformGroup>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </StackPanel>
+            </Expander.Header>
+            <Border Margin="5,0,0,0" Style="{DynamicResource BorderStyle}" Background="{DynamicResource DiagramGradientBrush}">
+                <svc:PictureDetails DataContext="{Binding PictureDetails}" />
+            </Border>
+        </Expander>
+
+    </Grid>
+    <!-- Make sure to place the style at the bottom because the trigger depends on the detailsColumn defined above. -->
+    <UserControl.Style>
+        <Style TargetType="sv:QueuedPicturesEditor" BasedOn="{StaticResource {x:Type UserControl}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PictureDetails.UISettings.PictureDetailsPanelIsExpanded, FallbackValue=false}" Value="false">
+                    <Setter Property="DetailsPanelVisible" Value="false" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+</UserControl>

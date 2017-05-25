@@ -1,0 +1,85 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+             xmlns:s="http://schemas.schedulr.codeplex.com/2010/xaml/presentation"
+             x:Class="Schedulr.Views.UploadConfirmation"
+             mc:Ignorable="d"
+             w:MergeCollections.InputBindings="{Binding InputBindings}"
+             DataContext="{Binding Path=UploadConfirmationViewModel, Source={StaticResource Locator}}">
+    <StackPanel MinWidth="400">
+
+        <Border Padding="5,0,5,0" Background="{DynamicResource BackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="5,5,0,0" Height="35">
+            <TextBlock Padding="4,0,0,0" Text="Confirm Upload" TextWrapping="Wrap" Foreground="{DynamicResource HeaderFontColor}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+        </Border>
+
+        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource BackgroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Margin="5" Padding="5">
+                    <StackPanel>
+                        <TextBlock Foreground="{DynamicResource UserMessageFontBrush}" Text="{Binding Path=InfoMessage, Mode=OneWay}" />
+                        <TextBlock Foreground="{DynamicResource UserMessageFontBrush}" Text="{Binding Path=RemainingTimeoutMessage, Mode=OneWay, StringFormat='You can cancel these within the next {0}.'}" />
+                        <ProgressBar Margin="0,5,0,0" Minimum="0" Maximum="{Binding Path=TotalTimeoutSeconds, Mode=OneWay}" Value="{Binding Path=ElapsedTimeoutSeconds, Mode=OneWay}" Height="12" />
+                    </StackPanel>
+                </Border>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding UploadRequests}" MaxWidth="500">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{DynamicResource BorderStyle}" Background="{DynamicResource DiagramGradientBrush}" Margin="5,0,5,5" Padding="5">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Style="{DynamicResource BorderStyle}" Background="Transparent" Padding="5" Margin="5">
+                                            <w:BackgroundLoadingImage Source="/Resources/Anonymous.png" ActualSource="{Binding Path=Request.Account.UserInfo.BuddyIconUrl}" Width="48" Height="48" />
+                                        </Border>
+                                        <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource UserMessageFontBrush}">
+                                            <Run Text="{Binding Path=Request.Account.Name}" FontWeight="Bold" />: <Run Text="{Binding Path=PictureCount, Mode=OneWay}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+                                            <ItemsControl ItemsSource="{Binding Path=Request.Pictures}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Style="{StaticResource BorderStyle}" Background="Transparent" Padding="5" Margin="5">
+                                                            <w:BackgroundLoadingImage Source="/Resources/Picture.png" ActualSource="{Binding FileName}" DecodePixelWidth="40" ToolTip="{Binding Title}" MaxWidth="40" MaxHeight="40" />
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
+
+        <Border Background="{DynamicResource BackgroundBrush}" Height="35" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,5,5" Padding="5,0,5,0">
+            <ItemsControl ItemsSource="{Binding DialogCommands}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" ToolTip="{Binding Description}" Command="{Binding}" Margin="5,0,0,0" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+
+    </StackPanel>
+</UserControl>

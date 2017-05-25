@@ -1,0 +1,10 @@
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\bin\Debug\JelleDruyts.Windows.xml
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\bin\Debug\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\bin\Debug\JelleDruyts.Windows.pdb
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\bin\Debug\JelleDruyts.Windows.dll.CodeAnalysisLog.xml
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\bin\Debug\JelleDruyts.Windows.dll.lastcodeanalysissucceeded
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\obj\Debug\JelleDruyts.Windows.csprojResolveAssemblyReference.cache
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\obj\Debug\JelleDruyts.Windows.Text.TemplateEditorForm.resources
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\obj\Debug\JelleDruyts.Windows.csproj.GenerateResource.Cache
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\obj\Debug\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\JelleDruyts.Windows\obj\Debug\JelleDruyts.Windows.pdb

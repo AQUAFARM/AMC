@@ -1,0 +1,9 @@
+!! Installation
+
+The application can be installed by running the installer or by just copying it to a destination directory of your choice. If you do not use the installer, make sure to install the free [url:Microsoft .NET Framework 4|http://go.microsoft.com/fwlink/?linkid=186914] first.
+
+Uninstalling can be done through the Windows control panel or (if you simply copied it) is just a matter of deleting the files again.
+
+!! Portable Application
+
+If you want a portable application (for use from a USB stick for example) you can edit the "Schedulr.exe.config" configuration file to specify a relative path for the "ConfigurationFilePath" and "LogFilePath" settings. That way, no files will be saved anywhere outside of the application folder.

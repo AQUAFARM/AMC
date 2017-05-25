@@ -1,0 +1,81 @@
+!! Accounts
+
+Manage your Flickr accounts, export and import the configuration...
+
+[image:Accounts|SchedulrAccounts.png]
+
+!! Authentication
+
+Authenticate the application with Flickr and authorize it to access your account...
+
+[image:Authentication Step 1|SchedulrAuthenticationStep1.png]
+
+[image:Authentication Step 2|SchedulrAuthenticationStep2.png]
+
+[image:Authentication Step 2|SchedulrAuthenticationStep3.png]
+
+!! Queue
+
+Manage a queue of pictures and videos to be uploaded with their details and settings...
+
+[image:Queue - Details|SchedulrQueueDetails.png]
+
+Add them to photosets and groups...
+
+[image:Queue - Sets and Groups|SchedulrQueueSetsGroups.png]
+
+Set the geographic location where the picture or video was made...
+
+[image:Queue - Location|SchedulrQueueLocation.png]
+
+Configure a new photoset to be created when the batch is uploaded...
+
+[image:Queue - Batch|SchedulrQueueBatch.png]
+
+!! Upload
+
+Upload files manually or using a scheduled task...
+
+[image:Confirm Upload|SchedulrConfirmUpload.png]
+
+!! Uploads
+
+View the history of files that have been uploaded...
+
+[image:Uploads|SchedulrUploads.png]
+
+!! Schedule
+
+Define and monitor the scheduled task that will upload the files...
+
+[image:Schedule|SchedulrSchedule.png]
+
+!! Events
+
+Use plugins to perform actions when certain events happen...
+
+[image:Application-wide Event Plugins|SchedulrEventsApplication.png]
+
+[image:Account-specific Event Plugins|SchedulrEventsAccount.png]
+
+You can also use rendering plugins to modify the picture or video before it is uploaded...
+
+[image:Rendering Plugins|SchedulrEventsRendering.png]
+
+[image:Rendering Preview|SchedulrEventsRenderingPreview.png]
+
+!! Options
+
+Set application options...
+
+[image:Options|SchedulrOptions.png]
+
+!! Windows 7 Integration
+
+You can follow the progress of long running operations (e.g. uploading files) just by looking at the Windows task bar.
+
+[image:Task Bar|SchedulrTaskBar.png]
+
+You can also right-click the application icon on the task bar to upload the next batch of files, open the log file or go directly to the application's home page.
+
+[image:Jump List|SchedulrJumpList.png]

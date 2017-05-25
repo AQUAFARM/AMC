@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<SchedulrConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.jelle.druyts.net/Schedulr">
+  <QueuedPictures>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\First Day.jpg" Tags="&quot;Day 1&quot; Travel Train" IsPublic="true" IsFamily="false" IsFriend="false" SetIds="set-1" GroupIds="group-1" UploadWithNext="false">
+      <Title>Arrival</Title>
+      <Description>This was a great first day.
+
+Really!</Description>
+    </Picture>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\Second Day 1.jpg" Tags="&quot;Day 2&quot; Travel Pool" IsPublic="false" IsFamily="true" IsFriend="false" SetIds="set-2" GroupIds="group-2" UploadWithNext="true">
+      <Title>Swimming Pool</Title>
+      <Description>Chilling in the pool!</Description>
+    </Picture>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\Second Day 2.jpg" Tags="&quot;Day 2&quot; Travel Beach" IsPublic="false" IsFamily="true" IsFriend="false" SetIds="set-2" GroupIds="group-2" UploadWithNext="false">
+      <Title>Beach</Title>
+      <Description>Sunbathing on the beach...</Description>
+    </Picture>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\Third Day 1.jpg" Tags="&quot;Day 3&quot; Travel City" IsPublic="false" IsFamily="false" IsFriend="true" SetIds="set-3" GroupIds="group-3" UploadWithNext="true">
+      <Title>City Tripping</Title>
+      <Description>Checking out the city.</Description>
+    </Picture>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\Third Day 2.jpg" Tags="&quot;Day 3&quot; Travel Museum" IsPublic="false" IsFamily="false" IsFriend="true" SetIds="set-3" GroupIds="group-3" UploadWithNext="false">
+      <Title>Museum</Title>
+      <Description>A bit of culture.</Description>
+    </Picture>
+    <Picture FileName="C:\Users\Schedulr\Pictures\Upload\Fourth Day.jpg" Tags="&quot;Day 4&quot; Travel Plane" IsPublic="true" IsFamily="true" IsFriend="true" SetIds="set-1 set-2 set-3 set-4" GroupIds="group-1 group-2 group-3 group-4" UploadWithNext="false">
+      <Title>Departure</Title>
+      <Description />
+    </Picture>
+  </QueuedPictures>
+  <UploadedPictures>
+    <UploadedPicture FileName="C:\Users\Schedulr\Pictures\Upload\Newyear.jpg" Tags="Newyear" IsPublic="true" IsFamily="true" IsFriend="true" SetIds="set-4" GroupIds="group-4" UploadWithNext="false" Uploaded="2010-06-10T19:00:23.2692962+01:00">
+      <Title>New Year</Title>
+      <Description />
+    </UploadedPicture>
+  </UploadedPictures>
+</SchedulrConfiguration>

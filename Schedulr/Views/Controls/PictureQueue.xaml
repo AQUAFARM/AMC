@@ -1,0 +1,149 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+             xmlns:si="clr-namespace:Schedulr.Infrastructure"
+             xmlns:svm="clr-namespace:Schedulr.ViewModels"
+             x:Class="Schedulr.Views.Controls.PictureQueue"
+             d:DesignHeight="480"
+             d:DesignWidth="640"
+             mc:Ignorable="d"
+             w:MergeCollections.InputBindings="{Binding InputBindings}">
+    <UserControl.Resources>
+        <si:SchedulrDragDropHandler x:Key="dragDropHandler" />
+        <BitmapImage x:Key="BackgroundImage" UriSource="/Resources/Picture.png"/>
+
+        <DataTemplate x:Key="DragAdorner">
+            <Border Style="{DynamicResource BorderStyle}" Background="Transparent" Padding="5" Margin="5">
+                <w:BackgroundLoadingImage Source="{StaticResource BackgroundImage}" ActualSource="{Binding ImageUrl}" DecodePixelWidth="100" MaxWidth="100" MaxHeight="100" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type svm:PictureViewModel}">
+            <Grid>
+                <Border x:Name="pictureBorder" Style="{StaticResource BorderStyle}" Background="Transparent" Padding="5" Margin="5">
+                    <Border.LayoutTransform>
+                        <ScaleTransform ScaleX="{Binding Path=DataContext.Scale, ElementName=layoutRoot}" ScaleY="{Binding Path=DataContext.Scale, ElementName=layoutRoot}" />
+                    </Border.LayoutTransform>
+                    <w:BackgroundLoadingImage Source="{Binding Source={StaticResource BackgroundImage}, Mode=OneTime}" ActualSource="{Binding ImageUrl, Mode=OneWay}" DecodePixelWidth="400" ToolTip="{Binding Path=Picture.Title}" MaxWidth="100" MaxHeight="100" />
+                </Border>
+                <Grid Width="{Binding ActualWidth, ElementName=pictureBorder, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=pictureBorder, Mode=OneWay}">
+                	<TextBlock Text="{Binding Picture.Title}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" TextAlignment="Center" VerticalAlignment="Center" Margin="5" Visibility="{Binding PreviewTitleVisibility}" Foreground="{StaticResource PicturePreviewTitleBrush}" FontWeight="Bold" />
+                	<ProgressBar HorizontalAlignment="Stretch" Height="7" Margin="5,0,5,7" VerticalAlignment="Bottom" Width="97" Visibility="{Binding Path=ProgressVisibility}" Value="{Binding Path=Progress}"/>
+                    <Image HorizontalAlignment="Right" Height="16" Margin="0,0,3,3" VerticalAlignment="Bottom" Width="16" Visibility="{Binding Path=CompletedVisibility}" Source="/Resources/Check.png" Stretch="Uniform"/>                    
+                </Grid>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListBoxItem}},Path=IsSelected}" Value="True">
+                    <Setter TargetName="pictureBorder" Property="BorderBrush" Value="{DynamicResource ImageBorderBorderBrush}" />
+                    <Setter TargetName="pictureBorder" Property="Background" Value="{DynamicResource ImageBorderFillBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                    <Setter TargetName="pictureBorder" Property="BorderBrush" Value="{DynamicResource ErrorForegroundBrush}" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StretchedHeaderTemplate">
+            <Border Loaded="StretchedHeaderTemplate_Loaded" HorizontalAlignment="Stretch">
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" />
+            </Border>
+        </DataTemplate>
+
+        <GroupStyle x:Key="PictureQueueGroupStyleVertical">
+            <GroupStyle.ContainerStyle>
+                <Style TargetType="{x:Type GroupItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                <Expander Style="{StaticResource IndentedContentExpander}" HeaderTemplate="{StaticResource StretchedHeaderTemplate}" Margin="8,8,8,0" IsExpanded="{Binding Path=Name.Batch.IsExpanded}">
+                                    <Expander.Header>
+                                        <TextBlock TextWrapping="NoWrap" HorizontalAlignment="Stretch" Text="{Binding Path=Name.LongName}" />
+                                    </Expander.Header>
+                                    <ItemsPresenter/>
+                                </Expander>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GroupStyle.ContainerStyle>
+        </GroupStyle>
+
+        <GroupStyle x:Key="PictureQueueGroupStyleHorizontalFlow">
+            <GroupStyle.Panel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GroupStyle.Panel>
+            <GroupStyle.ContainerStyle>
+                <Style TargetType="{x:Type GroupItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="10,1,1,1" Margin="5" Padding="5">
+                                    <Expander HeaderTemplate="{StaticResource StretchedHeaderTemplate}" ExpandDirection="Right" IsExpanded="{Binding Path=Name.Batch.IsExpanded}">
+                                        <Expander.Header>
+                                            <TextBlock TextWrapping="NoWrap" HorizontalAlignment="Stretch" Text="{Binding Path=Name.ShortName}" ToolTip="{Binding Path=Name.LongName}">
+                                                <TextBlock.LayoutTransform>
+                                                    <TransformGroup>
+                                                        <RotateTransform Angle="-90"/>
+                                                    </TransformGroup>
+                                                </TextBlock.LayoutTransform>
+                                            </TextBlock>
+                                        </Expander.Header>
+                                        <ItemsPresenter Margin="5,0,0,0" />
+                                    </Expander>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GroupStyle.ContainerStyle>
+        </GroupStyle>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="layoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" x:Name="picturesListBox" Background="Transparent" BorderThickness="0"
+                 GroupStyleSelector="SelectGroupStyle"
+                 ItemsSource="{Binding Pictures}" SelectionMode="Extended" SelectionChanged="picturesListBox_SelectionChanged"
+                 Mouse.MouseDown="picturesListBox_MouseDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 w:DragDrop.IsDragSource="{Binding IsDragDropSupported}" w:DragDrop.IsDropTarget="{Binding IsDragDropSupported}" w:DragDrop.DragAdornerTemplate="{StaticResource DragAdorner}" w:DragDrop.DropHandler="{StaticResource dragDropHandler}" w:DragDrop.CreateNewGroupOnHeaderDrop="True">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+            </ListBox.Resources>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Border Grid.Row="1" Style="{DynamicResource BorderStyle}" Margin="5">
+            <WrapPanel Orientation="Horizontal" Margin="5,0,5,5">
+                <ItemsControl ItemsSource="{Binding Commands}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}" ToolTip="{Binding Description}" Command="{Binding}" Margin="0,5,5,0" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5,0,0">
+                    <TextBlock Text="Zoom" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Margin="5,0,0,0" />
+                    <Slider Width="100" Margin="10,0,10,0" Minimum="1" Maximum="4" Value="{Binding Scale}" LargeChange="0.5" SmallChange="0.1" TickPlacement="BottomRight" TickFrequency="0.5" Style="{StaticResource SmallSlider}" />
+                </StackPanel>
+            </WrapPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

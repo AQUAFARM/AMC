@@ -1,0 +1,73 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Height="400"
+        Width="600">
+	<Window.Resources>
+
+  <!-- This is the thickness setting for most borders -->
+  <Thickness x:Key="BorderThickness">1,1,1,1</Thickness>
+
+  <!-- The Border Brush is used as the color for most borders -->
+  <SolidColorBrush x:Key="BorderBrush" Color="#FF747474" />
+
+  <!-- This is the style for most borders -->
+  <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+    <Setter Property="BorderThickness" Value="{DynamicResource BorderThickness}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="CornerRadius" Value="10,10,10,10" />
+  </Style>
+
+  <!-- The Diagram Gradient Brush is used as the background for the Diagram area-->
+  <LinearGradientBrush x:Key="DiagramGradientBrush" EndPoint="0.439,0.967" StartPoint="0.561,0.033">
+    <GradientStop Color="#FF202020" Offset="0" />
+    <GradientStop Color="#FF545454" Offset="1" />
+  </LinearGradientBrush>
+
+	</Window.Resources>
+	<Grid Margin="10">
+		<Canvas>
+			<!-- The image within the border should be 493 x 312 so the border itself is 2 pixels wider for each border line -->
+			<Border BorderBrush="Black" BorderThickness="1" Width="495" Height="314" />
+			<Border Style="{DynamicResource BorderStyle}" Background="{DynamicResource DiagramGradientBrush}" Padding="5" Width="164" Height="312" Margin="1">
+				<StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0,20,0,0">
+					<Border HorizontalAlignment="Center">
+						<Border.LayoutTransform>
+							<ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+						</Border.LayoutTransform>
+						<StackPanel HorizontalAlignment="Center">
+							<Border x:Name="reflectedVisual" Background="Transparent" HorizontalAlignment="Center">
+								<TextBlock Margin="0,0,0,-5" FontFamily="Segoe UI" FontSize="26" FontWeight="Bold" TextWrapping="NoWrap"><Run Foreground="#0063DC" Text="Flick"/><Run Foreground="#FF0084" Text="r"/><Run Text=" "/><Run Foreground="#0063DC" Text="Schedul"/><Run Foreground="#FF0084" Text="r"/></TextBlock>
+							</Border>
+					        <!-- Create a reflection of the visual above. -->
+							<Border Height="{Binding ActualHeight, ElementName=reflectedVisual}" Width="{Binding ActualWidth, ElementName=reflectedVisual}">
+								<Border.Background>
+									<VisualBrush Opacity="0.75" Visual="{Binding ElementName=reflectedVisual}">
+										<VisualBrush.RelativeTransform>
+											<TransformGroup>
+												<ScaleTransform ScaleX="1" ScaleY="-1" />
+												<TranslateTransform Y="1" />
+											</TransformGroup>
+										</VisualBrush.RelativeTransform>
+									</VisualBrush>
+								</Border.Background>
+								<Border.OpacityMask>
+									<LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+										<GradientStop Color="#FF000000" Offset="0.0" />
+										<GradientStop Color="#11000000" Offset="0.6" />
+										<GradientStop Color="#00000000" Offset="0.75" />
+									</LinearGradientBrush>
+								</Border.OpacityMask>
+								<Border.BitmapEffect>
+									<BlurBitmapEffect Radius="3.0" />
+								</Border.BitmapEffect>
+							</Border>
+						</StackPanel>
+					</Border>
+					<TextBlock Text="http://schedulr.codeplex.com" Foreground="LightGray" FontSize="10" HorizontalAlignment="Center" Margin="0,-10,0,0" />
+				</StackPanel>
+			</Border>
+		</Canvas>
+	</Grid>
+</Window>

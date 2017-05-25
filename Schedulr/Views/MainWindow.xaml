@@ -1,0 +1,107 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:w="http://schemas.jelle.druyts.net/2010/xaml/presentation"
+        xmlns:sv="clr-namespace:Schedulr.Views"
+        x:Class="Schedulr.Views.MainWindow"
+        mc:Ignorable="d"
+        Icon="/App.ico"
+        Background="{DynamicResource MainBackgroundBrush}"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=MainWindowViewModel, Source={StaticResource Locator}}"
+        WindowState="{Binding Path=Configuration.UISettings.MainWindowState, Mode=TwoWay}"
+        Height="{Binding Path=Configuration.UISettings.MainWindowHeight, Mode=TwoWay}"
+        Width="{Binding Path=Configuration.UISettings.MainWindowWidth, Mode=TwoWay}"
+        Title="{Binding MainWindowTitle}"
+        TaskbarItemInfo="{Binding TaskbarItemInfo}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" Margin="5,0,5,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <sv:Logo Grid.Column="0" />
+                    <sv:StatusPanel Grid.Column="1" />
+                </Grid>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" MinHeight="60" Visibility="{Binding AccountDetailsVisibility}">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock VerticalAlignment="Center" Margin="0,0,5,0">
+                                <Hyperlink Foreground="{DynamicResource InfoFontBrush}" Command="{Binding ManageAccountsCommand}" ToolTip="Manage your Flickr accounts">Account:</Hyperlink>
+                            </TextBlock>
+                            <ComboBox x:Name="accountsComboBox" SelectedItem="{Binding Path=SelectedAccount, Mode=TwoWay}" ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Account.Name" VerticalAlignment="Center" />
+                            <Button Command="{Binding UpdateAccountsCommand}" Margin="2,0,0,0" ToolTip="Update accounts with the current information from Flickr" Style="{StaticResource SmallButton}">
+                                <Image Source="/Resources/Refresh.png" />
+                            </Button>
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding Path=SelectedAccount.UserMessages}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Right">
+                                        <Hyperlink Command="{Binding Command}" Foreground="{DynamicResource UserMessageFontBrush}" IsEnabled="{Binding CommandAvailable}">
+                                            <TextBlock Text="{Binding Message}" />
+                                        </Hyperlink>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock>
+                            <Hyperlink ToolTip="Visit your Flickr page" TextDecorations="None" Command="{Binding VisitHomepageCommand}" CommandParameter="{Binding Path=SelectedAccount.Account.UserInfo.PicturesUrl}">
+                                <w:BackgroundLoadingImage Source="/Resources/Anonymous.png" ActualSource="{Binding Path=SelectedAccount.Account.UserInfo.BuddyIconUrl}" Width="48" Height="48" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+
+            <Border Margin="5" Visibility="{Binding AccountDetailsVisibility}">
+                <TabControl Margin="5,0,5,5" DataContext="{Binding Path=SelectedAccount.Account}">
+                    <TabItem Header="Queue">
+                        <sv:QueuedPicturesEditor />
+                    </TabItem>
+                    <TabItem Header="Uploads">
+                        <sv:UploadedPicturesEditor />
+                    </TabItem>
+                    <TabItem Header="Schedule">
+                        <sv:ScheduleEditor />
+                    </TabItem>
+                    <TabItem Header="Events">
+                        <sv:PluginsEditor />
+                    </TabItem>
+                    <TabItem Header="Options">
+                        <sv:OptionsEditor />
+                    </TabItem>
+                </TabControl>
+            </Border>
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding Path=ConfigurationEditorVisibility, FallbackValue=Collapsed}">
+                <sv:ConfigurationEditor />
+            </Grid>
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding Path=UploadConfirmationVisibility, FallbackValue=Collapsed}">
+                <sv:UploadConfirmation />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

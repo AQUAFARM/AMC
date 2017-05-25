@@ -1,0 +1,11 @@
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\Schedulr.Common.xml
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\Schedulr.Common.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\Schedulr.Common.pdb
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\Schedulr.Common.dll.CodeAnalysisLog.xml
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\Schedulr.Common.dll.lastcodeanalysissucceeded
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\JelleDruyts.Windows.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\JelleDruyts.Windows.pdb
+D:\Proiecte\C#\Schedulr\Schedulr.Common\bin\Debug\JelleDruyts.Windows.xml
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Debug\Schedulr.Common.csprojResolveAssemblyReference.cache
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Debug\Schedulr.Common.dll
+D:\Proiecte\C#\Schedulr\Schedulr.Common\obj\Debug\Schedulr.Common.pdb

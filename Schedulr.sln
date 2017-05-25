@@ -1,0 +1,167 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulr", "Schedulr\Schedulr.csproj", "{981895EA-68F4-4976-A31B-0466824D766C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulr.Test", "Schedulr.Test\Schedulr.Test.csproj", "{1112136C-6F83-43EC-90F5-AE8C8E83548C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{61A17295-6ABB-4F9B-BBE2-072A67D6320A}"
+	ProjectSection(SolutionItems) = preProject
+		JelleDruyts.Windows.snk = JelleDruyts.Windows.snk
+		Local.testsettings = Local.testsettings
+		Schedulr.snk = Schedulr.snk
+		Schedulr.vsmdi = Schedulr.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JelleDruyts.Windows", "JelleDruyts.Windows\JelleDruyts.Windows.csproj", "{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JelleDruyts.Windows.Test", "JelleDruyts.Windows.Test\JelleDruyts.Windows.Test.csproj", "{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulr.Common", "Schedulr.Common\Schedulr.Common.csproj", "{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{6B9B9482-98F7-427E-99AD-0B3EF82FA9D0}"
+	ProjectSection(SolutionItems) = preProject
+		References\FlickrNet.dll = References\FlickrNet.dll
+		References\GMap.NET.Core.dll = References\GMap.NET.Core.dll
+		References\GMap.NET.Core.xml = References\GMap.NET.Core.xml
+		References\GMap.NET.WindowsPresentation.dll = References\GMap.NET.WindowsPresentation.dll
+		References\GMap.NET.WindowsPresentation.xml = References\GMap.NET.WindowsPresentation.xml
+		References\Microsoft.Win32.TaskScheduler.dll = References\Microsoft.Win32.TaskScheduler.dll
+		References\Microsoft.Win32.TaskScheduler.pdb = References\Microsoft.Win32.TaskScheduler.pdb
+		References\Microsoft.Win32.TaskScheduler.xml = References\Microsoft.Win32.TaskScheduler.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{F24936E4-B3E5-4C57-89E3-DB9E6B609F32}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Logo.png = Resources\Logo.png
+		Resources\Logo.xaml = Resources\Logo.xaml
+		Resources\SchedulingVistaStep1.png = Resources\SchedulingVistaStep1.png
+		Resources\SchedulingVistaStep2.png = Resources\SchedulingVistaStep2.png
+		Resources\SchedulingVistaStep3.png = Resources\SchedulingVistaStep3.png
+		Resources\SchedulingVistaStep4.png = Resources\SchedulingVistaStep4.png
+		Resources\SchedulingVistaStep5.png = Resources\SchedulingVistaStep5.png
+		Resources\SchedulingVistaStep6.png = Resources\SchedulingVistaStep6.png
+		Resources\SchedulingVistaStep7.png = Resources\SchedulingVistaStep7.png
+		Resources\SchedulingXPStep1.png = Resources\SchedulingXPStep1.png
+		Resources\SchedulingXPStep2.png = Resources\SchedulingXPStep2.png
+		Resources\SchedulingXPStep3.png = Resources\SchedulingXPStep3.png
+		Resources\SchedulingXPStep4.png = Resources\SchedulingXPStep4.png
+		Resources\SchedulingXPStep5.png = Resources\SchedulingXPStep5.png
+		Resources\SchedulingXPStep6.png = Resources\SchedulingXPStep6.png
+		Resources\SchedulingXPStep7.png = Resources\SchedulingXPStep7.png
+		Resources\SchedulingXPStep8.png = Resources\SchedulingXPStep8.png
+		Resources\SchedulingXPStep9.png = Resources\SchedulingXPStep9.png
+		Resources\SchedulrAccounts.png = Resources\SchedulrAccounts.png
+		Resources\SchedulrAuthenticationStep1.png = Resources\SchedulrAuthenticationStep1.png
+		Resources\SchedulrAuthenticationStep2.png = Resources\SchedulrAuthenticationStep2.png
+		Resources\SchedulrAuthenticationStep3.png = Resources\SchedulrAuthenticationStep3.png
+		Resources\SchedulrConfirmUpload.png = Resources\SchedulrConfirmUpload.png
+		Resources\SchedulrEventsAccount.png = Resources\SchedulrEventsAccount.png
+		Resources\SchedulrEventsApplication.png = Resources\SchedulrEventsApplication.png
+		Resources\SchedulrEventsRendering.png = Resources\SchedulrEventsRendering.png
+		Resources\SchedulrEventsRenderingPreview.png = Resources\SchedulrEventsRenderingPreview.png
+		Resources\SchedulrJumpList.png = Resources\SchedulrJumpList.png
+		Resources\SchedulrOptions.png = Resources\SchedulrOptions.png
+		Resources\SchedulrQueueBatch.png = Resources\SchedulrQueueBatch.png
+		Resources\SchedulrQueueDetails.png = Resources\SchedulrQueueDetails.png
+		Resources\SchedulrQueueLocation.png = Resources\SchedulrQueueLocation.png
+		Resources\SchedulrQueueSetsGroups.png = Resources\SchedulrQueueSetsGroups.png
+		Resources\SchedulrSchedule.png = Resources\SchedulrSchedule.png
+		Resources\SchedulrTaskBar.png = Resources\SchedulrTaskBar.png
+		Resources\SchedulrUploads.png = Resources\SchedulrUploads.png
+		Resources\SetupBanner.png = Resources\SetupBanner.png
+		Resources\SetupBanner.xaml = Resources\SetupBanner.xaml
+		Resources\SetupDialog.png = Resources\SetupDialog.png
+		Resources\SetupDialog.xaml = Resources\SetupDialog.xaml
+		Resources\WikiDocumentation.txt = Resources\WikiDocumentation.txt
+		Resources\WikiDocumentationCommandLineOptions.txt = Resources\WikiDocumentationCommandLineOptions.txt
+		Resources\WikiDocumentationConfiguration.txt = Resources\WikiDocumentationConfiguration.txt
+		Resources\WikiDocumentationFaq.txt = Resources\WikiDocumentationFaq.txt
+		Resources\WikiDocumentationInstallation.txt = Resources\WikiDocumentationInstallation.txt
+		Resources\WikiDocumentationScheduling.txt = Resources\WikiDocumentationScheduling.txt
+		Resources\WikiDocumentationUpgrading.txt = Resources\WikiDocumentationUpgrading.txt
+		Resources\WikiDocumentationWritingPlugins.txt = Resources\WikiDocumentationWritingPlugins.txt
+		Resources\WikiHomepage.txt = Resources\WikiHomepage.txt
+		Resources\WikiScreenshots.txt = Resources\WikiScreenshots.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulr.Plugins", "Schedulr.Plugins\Schedulr.Plugins.csproj", "{018560A4-0D9E-4018-BC58-BAA440188B47}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs09
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = JelleDruyts.Windows.Test\\JelleDruyts.Windows.Test.csproj
+		SccProjectName1 = JelleDruyts.Windows.Test
+		SccLocalPath1 = JelleDruyts.Windows.Test
+		SccProjectUniqueName2 = JelleDruyts.Windows\\JelleDruyts.Windows.csproj
+		SccProjectName2 = JelleDruyts.Windows
+		SccLocalPath2 = JelleDruyts.Windows
+		SccProjectUniqueName3 = Schedulr.Common\\Schedulr.Common.csproj
+		SccProjectName3 = Schedulr.Common
+		SccLocalPath3 = Schedulr.Common
+		SccProjectUniqueName4 = Schedulr.Plugins\\Schedulr.Plugins.csproj
+		SccProjectName4 = Schedulr.Plugins
+		SccLocalPath4 = Schedulr.Plugins
+		SccProjectUniqueName5 = Schedulr.Test\\Schedulr.Test.csproj
+		SccProjectName5 = Schedulr.Test
+		SccLocalPath5 = Schedulr.Test
+		SccProjectUniqueName6 = Schedulr\\Schedulr.csproj
+		SccProjectName6 = Schedulr
+		SccLocalPath6 = Schedulr
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugOffline|Any CPU = DebugOffline|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{981895EA-68F4-4976-A31B-0466824D766C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981895EA-68F4-4976-A31B-0466824D766C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981895EA-68F4-4976-A31B-0466824D766C}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{981895EA-68F4-4976-A31B-0466824D766C}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{981895EA-68F4-4976-A31B-0466824D766C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981895EA-68F4-4976-A31B-0466824D766C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1112136C-6F83-43EC-90F5-AE8C8E83548C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB1BD47-3E43-44A6-969B-E7BB06BBA65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A1432F6-9ED5-4C1C-8A18-8FDAE895570B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB1FD3B-AF80-473E-87B0-F209D90F4E77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.DebugOffline|Any CPU.ActiveCfg = DebugOffline|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.DebugOffline|Any CPU.Build.0 = DebugOffline|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{018560A4-0D9E-4018-BC58-BAA440188B47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Schedulr.vsmdi
+	EndGlobalSection
+EndGlobal

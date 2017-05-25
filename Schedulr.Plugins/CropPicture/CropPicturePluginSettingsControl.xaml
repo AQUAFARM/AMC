@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Schedulr.Plugins.CropPicture.CropPicturePluginSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="Margin" Margin="0,5,0,0" VerticalAlignment="Center" />
+        <WrapPanel Grid.Column="1" Margin="5,5,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Left" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <TextBox Text="{Binding Path=CropMarginLeft}" MinWidth="40" Margin="0,0,5,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Top" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <TextBox Text="{Binding Path=CropMarginTop}" MinWidth="40" Margin="0,0,5,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Right" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <TextBox Text="{Binding Path=CropMarginRight}" MinWidth="40" Margin="0,0,5,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Bottom" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <TextBox Text="{Binding Path=CropMarginBottom}" MinWidth="40" Margin="0,0,5,0" />
+            </StackPanel>
+        </WrapPanel>
+    </Grid>
+</UserControl>

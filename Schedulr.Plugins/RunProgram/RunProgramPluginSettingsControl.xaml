@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Schedulr.Plugins.RunProgram.RunProgramPluginSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Program" Margin="0,0,5,0" VerticalAlignment="Center" />
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Path=FileName}" />
+            <Button Grid.Column="1"  Content="..." x:Name="browseFileNameButton" Click="browseFileNameButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+        </Grid>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Working folder" Margin="0,5,5,0" VerticalAlignment="Center" />
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Path=WorkingDirectory}" />
+            <Button Grid.Column="1"  Content="..." x:Name="browseWorkingDirectoryButton" Click="browseWorkingDirectoryButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+        </Grid>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Arguments" Margin="0,5,5,0" VerticalAlignment="Center" />
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Path=Arguments}" />
+            <Button Grid.Column="1"  Content="..." x:Name="editArgumentsTemplateButton" Click="editArgumentsTemplateButton_Click" Margin="5,0,0,0" Style="{DynamicResource MediumButton}" />
+        </Grid>
+
+        <WrapPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <CheckBox VerticalAlignment="Center" IsChecked="{Binding Path=WaitForExit}"><Label Content="Wait for the program to exit within" /></CheckBox>
+            <TextBox Text="{Binding Path=WaitForExitTimeoutSeconds}" MinWidth="40" Margin="5,0,0,0" />
+            <TextBlock Text="seconds (or 0 to wait indefinitely)" VerticalAlignment="Center" Margin="5,0,0,0" />
+        </WrapPanel>
+    </Grid>
+</UserControl>

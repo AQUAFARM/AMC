@@ -1,0 +1,75 @@
+You can now create Windows scheduled tasks directly from within the application; but if you want to create them manually, follow the instructions below (depending on your edition of Windows).
+* [Windows 7 & Windows Vista|#WindowsVista]
+* [Windows XP|#WindowsXP]
+
+{anchor:WindowsVista}
+!! Windows 7 & Windows Vista
+Open Start Menu, All Programs, Accessories, System Tools, Tasks Scheduler.
+
+Click "Create Basic Task..."
+
+[image:Windows Vista Task Scheduler|SchedulingVistaStep1.png]
+
+Fill in a recognizable task name and description.
+
+[image:Create a basic task|SchedulingVistaStep2.png]
+
+Define the trigger, i.e. when the task will be started.
+
+[image:Task trigger|SchedulingVistaStep3.png]
+
+Depending on the trigger type, fill in additional fields to define the exact schedule.
+
+[image:Task trigger details|SchedulingVistaStep4.png]
+
+Configure the action to "Start a program".
+
+[image:Task action|SchedulingVistaStep5.png]
+
+Fill in the full path to the Flickr Schedulr executable and specify "/upload" as the argument (this is very important). If you have multiple Flickr accounts, specify the name of the account between quotes, e.g.: /upload "My Flickr Account". Otherwise the default account is used.
+
+[image:Start a program|SchedulingVistaStep6.png]
+
+Click Finish. Flickr Schedulr is now ready to start uploading your files!
+
+[image:Summary|SchedulingVistaStep7.png]
+
+{anchor:WindowsXP}
+!! Windows XP
+Open Start Menu, All Programs, Accessories, System Tools, Scheduled Tasks.
+
+Click "Add Scheduled Task"
+
+[image:Windows XP Task Scheduler|SchedulingXPStep1.png]
+
+The Scheduled Task Wizard opens, click Next to continue.
+
+[image:Scheduled Task Wizard|SchedulingXPStep2.png]
+
+Click "Browse..." to select the full path to the Flickr Schedulr executable.
+
+[image:Task executable|SchedulingXPStep3.png]
+
+Fill in a recognizable task name and select when the task should run.
+
+[image:Task schedule|SchedulingXPStep4.png]
+
+Fill in additional fields to define the exact schedule.
+
+[image:Task schedule details|SchedulingXPStep5.png]
+
+Fill in the details of the user account that should be used to launch the task.
+
+[image:Task account information|SchedulingXPStep6.png]
+
+The task has been created. Click "Open advanced properties..." to configure the command line (this is very important).
+
+[image:Task scheduled|SchedulingXPStep7.png]
+
+In the "Run" text box, add the "/upload" argument (without the quotes) to the path to the executable. If you have multiple Flickr accounts, specify the name of the account between quotes, e.g.: /upload "My Flickr Account". Otherwise the default account is used.
+
+[image:Task properties|SchedulingXPStep8.png]
+
+Click OK. Flickr Schedulr is now ready to start uploading your files!
+
+[image:Task is scheduled|SchedulingXPStep9.png]
