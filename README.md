@@ -1,6 +1,3 @@
-Here's our logo (hover to see the title text):
-
-Inline-style: 
 ![alt text](https://github.com/AQUAFARM/AMC/blob/master/Resources/style-guide/identy/bitrix24-vs-slack.png "Logo Title Text 1")
 
 Reference-style: 
@@ -11,6 +8,7 @@ Here's our logo (hover to see the title text):
 
 
 
+Here's our logo (hover to see the title text):
 
 
 # Aqua Media Cloud
@@ -134,5 +132,5 @@ Intelect Flickr Uploader
 
 
 
-
-
+Update READNE.md
+Edit file
