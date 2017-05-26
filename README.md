@@ -1,3 +1,18 @@
+Here's our logo (hover to see the title text):
+
+Inline-style: 
+![alt text](https://github.com/AQUAFARM/AMC/blob/master/Resources/style-guide/identy/bitrix24-vs-slack.png "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+Here's our logo (hover to see the title text):
+
+
+
+
+
 # Aqua Media Cloud
 Интелектуальная система менеджмента мультимедиа контента.
 
